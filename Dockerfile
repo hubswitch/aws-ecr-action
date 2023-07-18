@@ -4,8 +4,7 @@ RUN apk update \
   && apk upgrade \
   && apk add --no-cache --update python py-pip coreutils bash \
   && rm -rf /var/cache/apk/* \
-  && pip install pyyaml==5.3.1 \
-  && pip install -U awscli \
+  && pip install "Cython<3.0" "pyyaml<6" --no-build-isolation awscli \
   && apk --purge -v del py-pip
 
 ADD entrypoint.sh /entrypoint.sh
